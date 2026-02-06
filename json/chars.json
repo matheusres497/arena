@@ -1,0 +1,173 @@
+{
+    "characters": [
+        {
+            "charid": 1,
+            "name": "Kurosaki Ichigo",
+            "description": "Ichigo is a Substitute Shinigami who initially borrowed Rukia's own Shinigami powers. Since then, Ichigo has unlocked and learned how to use Zangetsu while developing a close bond with him.",
+            "tags": ["Substitute Shinigami", "Human", "Karakura Town"],
+            "portrait": "https://imgur.com/ugl6tIm.png",
+            "skills": [
+                {
+                    "skillid": 1,
+                    "skillportrait": "https://imgur.com/VXKHzgv.png",
+                    "name": "Zangetsu Slash",
+                    "description": "Ichigo charges at the enemy with his sword, dealing 20 physical damage to one enemy. This skill will deal 5 more physical damage every time it is used.",
+                    "skilltags": ["Physical", "Instant", "Scaling"],
+                    "target": {"enemy": 1},
+                    "damage": {"physical": 20},
+                    "damagescaling": {"amount": 5, "duration": -1, "stacking": true},
+                    "energycost": {"red": 1},
+                    "cooldown": 0
+                },
+                {
+                    "skillid": 2,
+                    "skillportrait": "https://imgur.com/0yigStg.png",
+                    "name": "Hollow Slayer",
+                    "description": "Ichigo gathers all his energy and unleashes it in a giant sword wave. This deals 35 energy damage to one enemy and generates 1 random energy. This skill will deal 5 more energy damage every time it is used.",
+                    "skilltags": ["Energy", "Instant", "Scaling"],
+                    "target": {"enemy": 1},
+                    "damage": {"energy": 35},
+                    "damagescaling": {"amount": 5, "duration": -1, "stacking": true},
+                    "energycost": {"yellow": 1, "red": 1},
+                    "cooldown": 1
+                },
+                {
+                    "skillid": 3,
+                    "skillportrait": "https://imgur.com/uEmk5yV.png",
+                    "name": "Summon Zangetsu",
+                    "description": "Ichigo summons the power of his sword to aid him. For 3 turns, his attacks will pierce armor and will deal 10 more damage. He will also gain 25 shield points that stack. This skill cannot be used while active.",
+                    "skilltags": ["Strategy", "Instant"],
+                    "target": {"self": 1},
+                    "addeffect_1": {"effectname": "ignorearmor", "duration": 3},
+                    "addeffect_2": {"effectname": "giveshield", "value": 25, "duration": -1},
+                    "addeffect_3": {"effectname": "increasedamage", "value": 10, "dmgtype": "all", "duration": 3},
+                    "energycost": {"random": 1},
+                    "usablewhileactive": false,
+                    "cooldown": 3
+                },
+                {
+                    "skillid": 4,
+                    "skillportrait": "https://imgur.com/jd2U3Ai.png",
+                    "name": "Zangetsu's Defense",
+                    "description": "This skill makes Ichigo invulnerable for 1 turn.",
+                    "skilltags": ["Strategy", "Instant"],
+                    "target": {"self": 1},
+                    "addeffect_1": {"effectname": "invul", "duration": 1},
+                    "energycost": {"random": 1},
+                    "cooldown": 4
+                }
+            ]
+        },
+        {
+            "charid": 2,
+            "name": "Kuchiki Rukia",
+            "description": "A Shinigami from the 13th division and the sister of Kuchiki Byakuya. She is skilled in various types of Kido for disabling enemies and is currently on a mission to the real world.",
+            "tags": ["Shinigami", "Karakura Town", "Soul Society"],
+            "portrait": "https://imgur.com/iCYYw5q.png",
+            "skills": [
+                {
+                    "skillid": 5,
+                    "skillportrait": "https://imgur.com/i8DO0lD.png",
+                    "name": "Bakudo #1: Sai",
+                    "description": "Rukia binds an enemy's arms and legs in place, dealing 10 energy damage and stunning them for 1 turn. If this skill is used after 'Hado #33: Sokatsui', it will also remove 1 random energy from the enemy.",
+                    "skilltags": ["Energy", "Instant"],
+                    "target": {"enemy": 1},
+                    "damage": {"energy": 10},
+                    "condition": {"lastskillused": 6, "addeffect_2": {"effectname": "removeenergy", "energytype": "random", "amount": 1}},
+                    "addeffect_1": {"effectname": "stun", "duration": 1},
+                    "energycost": {"blue": 1},
+                    "cooldown": 1
+                },
+                {
+                    "skillid": 6,
+                    "skillportrait": "https://imgur.com/VjXY3yB.png",
+                    "name": "Hado #33: Sokatsui",
+                    "description": "Rukia uses a lesser version of Sokatsui, dealing 20 energy damage to one enemy and reducing the physical damage they deal by 15 for 1 turn. If this skill is used after 'Bakudo #1: Sai', it will deal 10 more energy damage.",
+                    "skilltags": ["Energy", "Instant"],
+                    "target": {"enemy": 1},
+                    "damage": {"energy": 20},
+                    "condition": {"lastskillused": 5, "damage": {"energy": 30}},
+                    "addeffect_1": {"effectname": "reducedmgdealt", "value": 15, "dmgtype": "physical", "duration": 1},
+                    "energycost": {"blue": 1},
+                    "cooldown": 0
+                },
+                {
+                    "skillid": 7,
+                    "skillportrait": "https://imgur.com/vK9aFRm.png",
+                    "name": "Gokon Tekko",
+                    "description": "For 2 turns, if an enemy is the target of new non-true damage, they will lose one random energy; this effect can only drain 1 per turn; damage skills that drain or remove energy will not activate this effect. The following 2 turns, this character's other skills will have their secondary effects automatically activated.",
+                    "skilltags": ["Strategy", "Instant"],
+                    "target": {"enemy": "all"},
+                    "duration": 2,
+                    "energycost": {"random": 1},
+                    "cooldown": 3
+                },
+                {
+                    "skillid": 8,
+                    "skillportrait": "https://imgur.com/AzbNN4K.png",
+                    "name": "Air Leap",
+                    "description": "This skill makes Rukia invulnerable for 1 turn.",
+                    "skilltags": ["Strategy", "Instant"],
+                    "target": {"self": 1},
+                    "addeffect_1": {"effectname": "invul", "duration": 1},
+                    "energycost": {"random": 1},
+                    "cooldown": 4
+                }
+            ]
+        },
+        {
+            "charid": 3,
+            "name": "Inoue Orihime",
+            "description": "A classmate and companion of Ichigo. While shy and timid, Orihime possesses powers that are beyond the understanding of Shinigami or Hollows; those of which allow her to negate or reject opposing powers that might harm her friends.",
+            "tags": ["Human", "Karakura Town"],
+            "portrait": "https://imgur.com/RMW9SeP.png",
+            "skills": [
+                {
+                    "skillid": 9,
+                    "skillportrait": "https://imgur.com/GCfTIYS.png",
+                    "name": "Shun Shun Rikka: Tsubaki",
+                    "description": "Orihime summons Tsubaki, who deals 10 armor piercing physical damage to one enemy. For 2 turns, that enemy will receive 5 more damage from physical and energy skills.",
+                    "skilltags": ["Physical", "Instant"],
+                    "target": {"enemy": 1},
+                    "damage": {"physical": 10, "ignorearmor": true},
+                    "addeffect_1": {"effectname": "dmgvulnerability", "physical": 5, "energy": 5, "duration": 2},
+                    "energycost": {"random": 1},
+                    "cooldown": 0
+                },
+                {
+                    "skillid": 10,
+                    "skillportrait": "https://imgur.com/oDAxSBM.png",
+                    "name": "Santen Kesshun",
+                    "description": "Orihime places a shield to block incoming attacks. For 1 turn, Orihime and one ally will gain 20 points of shield and will heal 10 health.",
+                    "skilltags": ["Heal", "Strategy", "Instant"],
+                    "target": {"self": 1, "ally": 1},
+                    "addeffect_1": {"effectname": "giveshield", "value": 20, "duration": 1},
+                    "addeffect_2": {"effectname": "heal", "value": 10},
+                    "energycost": {"random": 1},
+                    "cooldown": 1
+                },
+                {
+                    "skillid": 11,
+                    "skillportrait": "https://imgur.com/z6AEcgg.png",
+                    "name": "Sōten Kisshun",
+                    "description": "Orihime removes all debuffs on one ally for 2 turns and then heals that ally, or herself, for 25 health for 2 turns. If she is stunned on the second turn of its usage, that ally will instantly heal 15 health.",
+                    "skilltags": ["Strategy", "Instant"],
+                    "target": {"ally": 1},
+                    "energycost": {"yellow": 1, "random": 1},
+                    "cooldown": 2
+                },
+                {
+                    "skillid": 12,
+                    "skillportrait": "https://imgur.com/OzlDUB5.png",
+                    "name": "Orihime's Evasion",
+                    "description": "This skill makes Orihime invulnerable for 1 turn.",
+                    "skilltags": ["Strategy", "Instant"],  
+                    "target": {"self": 1},
+                    "addeffect_1": {"effectname": "invul", "duration": 1}, 
+                    "energycost": {"random": 1},
+                    "cooldown": 4
+                }
+            ]
+        }
+    ]    
+}

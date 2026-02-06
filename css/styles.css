@@ -1,0 +1,65 @@
+        body {
+            margin: 0;
+            width: 1024px;
+            height: 768px;
+            background-color: rgba(0, 94, 30, 0.566);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .buttons {
+            position: absolute;
+            top: 375px;
+            left: 55px;
+        }
+        button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .rectangle {
+            width: 550px;
+            height: 200px;
+            border: 3px solid black;
+            background-color: white;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 3px;
+            position: absolute;
+            bottom: 50px;
+            left: 50px;
+        }
+
+        .team {
+            width: 400px;
+            height: 110px;
+            border: 2px solid black;
+            background-color: white;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 3px;
+            position: absolute;
+            top: 100px;
+        }
+        .box {
+            width: 55px;
+            height: 50px;
+            border: 2px solid black;
+            margin: 3px;
+            padding-top: 6px;
+            background-size: cover;
+            background-position: center;
+        }
+        .team-box {
+            width: 100px;
+            height: 100px;
+            margin: 3px;
+            border: 2px solid #000000;
+            background-size: cover;
+            background-position: center;
+        }
