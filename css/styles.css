@@ -9,17 +9,16 @@
             justify-content: center;
             overflow: hidden;
         }
-        .buttons {
+        .main-buttons {
             position: absolute;
-            top: 375px;
-            left: 55px;
+            top: 475px;
         }
         button {
             margin: 0 10px;
             padding: 10px 20px;
             font-size: 16px;
         }
-        .rectangle {
+        .character-grid {
             width: 550px;
             height: 200px;
             border: 3px solid black;
@@ -29,11 +28,10 @@
             justify-content: space-between;
             padding: 3px;
             position: absolute;
-            bottom: 50px;
-            left: 50px;
+            bottom: -50px;
         }
 
-        .team {
+        .team-grid {
             width: 400px;
             height: 110px;
             border: 2px solid black;
@@ -44,7 +42,7 @@
             justify-content: space-between;
             padding: 3px;
             position: absolute;
-            top: 100px;
+            top: 340px;
         }
         .box {
             width: 55px;
