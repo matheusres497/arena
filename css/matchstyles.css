@@ -1,0 +1,153 @@
+body{
+  background-image: url("/img/battlebg/byakuya.png");
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  color:#e6eef6;
+  overflow:hidden;
+  position:relative;
+}
+
+.match-container{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  height:calc(100vh - 40px); /* use viewport height */
+  align-items:center;
+  padding:20px;
+}
+
+.players-col{
+  display:flex;
+  flex-direction:column;
+  gap:45px;
+  position: absolute;
+  left: 20px;
+  top: 45%;
+  transform: translateY(-50%);
+}
+
+.player-card{
+  display:flex;
+  align-items:center;
+  gap:30px;
+  bottom: 50px;
+}
+
+/* Portrait square */
+.portraitc1{
+  background-image: url("/img/charportraits/1.png");
+  width:150px;
+  height:150px;
+  border:3px black solid;
+  align-items:center;
+  justify-content:center;
+  color:#f7d9d9;
+  font-weight:700;
+}
+
+.portraitc2{
+  background-image: url("/img/charportraits/2.png");
+  width:150px;
+  height:150px;
+  border:3px black solid;
+  align-items:center;
+  justify-content:center;
+  color:#f7d9d9;
+  font-weight:700;
+}
+
+.portraitc3{
+  background-image: url("/img/charportraits/3.png");
+  width:150px;
+  height:150px;
+  border:3px black solid;
+  align-items:center;
+  justify-content:center;
+  color:#f7d9d9;
+  font-weight:700;
+}
+
+.skills-rect1{
+  width: 500px;
+  height: 100px;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  padding:8px;
+  transform: translateY(18%);
+}
+
+.skills-rect2{
+  width: 500px;
+  height: 100px;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  padding:8px;
+  transform: translateY(23%);
+}
+
+.skills-rect3{
+  width: 500px;
+  height: 100px;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  padding:8px;
+  transform: translateY(30%);
+}
+
+.skill1, .skill2, .skill3, .skill4, .skill5, .skill6, .skill7, .skill8, .skill9, .skill10, .skill11, .skill12{
+  width:100px;
+  height:100px;
+  border:2px black solid;
+  background-size: cover;
+  align-items:center;
+  cursor:pointer;
+}
+
+/* Right CPU column - portraits only */
+.cpu-col{
+  display:flex;
+  flex-direction:column;
+  gap:45px;
+  position: absolute;
+  right: 20px;
+  top: 45%;
+  transform: translateY(-50%);
+}
+
+/* CPU portrait smaller or same size */
+.cpu-portrait1{
+  background-image: url("/img/charportraits/3.png");
+  transform: scaleX(-1);
+  width:150px;
+  height:150px;
+  border:3px black solid;
+  align-items:center;
+  justify-content:center;
+  color:#f7d9d9;
+  font-weight:700;
+}
+
+.cpu-portrait2{
+  background-image: url("/img/charportraits/1.png");
+  transform: scaleX(-1);
+  width:150px;
+  height:150px;
+  border:3px black solid;
+  align-items:center;
+  justify-content:center;
+  color:#f7d9d9;
+  font-weight:700;
+}
+
+.cpu-portrait3{
+  background-image: url("/img/charportraits/2.png");
+  transform: scaleX(-1);
+  width:150px;
+  height:150px;
+  border:3px black solid;
+  align-items:center;
+  justify-content:center;
+  color:#f7d9d9;
+  font-weight:700;
+}

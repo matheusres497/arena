@@ -28,7 +28,7 @@
             justify-content: space-between;
             padding: 3px;
             position: absolute;
-            bottom: -50px;
+            bottom: 20px;
         }
 
         .team-grid {
@@ -42,7 +42,7 @@
             justify-content: space-between;
             padding: 3px;
             position: absolute;
-            top: 340px;
+            top: 240px;
         }
         .box {
             width: 55px;

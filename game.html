@@ -46,4 +46,24 @@
     </div>
 </body>
 <script src="js/script.js"></script>
+
+    <button onclick="startMatch()">Start Game</button>
+    <script>
+
+    function createWindow(src, width, height){
+        var win = window.open(src, "_new", "width="+width+",height="+height);
+        win.addEventListener("resize", function(){
+            console.log("Resized");
+            win.resizeTo(width, height);
+        });
+    }
+
+        function startMatch() {
+            const width = 1280;
+            const height = 960;
+            createWindow("matchoffline.html", width, height);
+            // window.open('matchoffline.html', 'gameWindow', `width=${width},height=${height},resizable=no`);
+        }
+    </script>
+
 </html>
