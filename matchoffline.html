@@ -7,10 +7,56 @@
     <link rel="stylesheet" href="css/matchstyles.css" />
 </head>
 <body>
+    <div class="hud-top">
+        <div class="profile-box">
+            <div class="profile-text p-side">
+                <span class="hud-name">PLAYER 1</span>
+                <span class="hud-rank">INITIATE</span>
+            </div>
+            <div class="hud-portrait" style="background-image: url('img/charportraits/0.png');"></div>
+        </div>
+
+<div class="hud-center">
+            <div class="turn-text">OPPONENT'S TURN</div>
+            
+            <div class="timer-bar-bg">
+                <div class="timer-fill"></div>
+            </div>
+
+            <div class="counters-row">
+                <div class="counter-item">
+                    <div class="c-box c-white"></div> <span>x 1</span>
+                </div>
+                <div class="counter-item">
+                    <div class="c-box c-blue"></div> <span>x 1</span>
+                </div>
+                <div class="counter-item">
+                    <div class="c-box c-yellow"></div> <span>x 1</span>
+                </div>
+                <div class="counter-item">
+                    <div class="c-box c-red"></div> <span>x 1</span>
+                </div>
+                <div class="counter-item">
+                    <div class="c-box c-black"></div> <span>x 4</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-box">
+            <div class="hud-portrait" style="background-image: url('img/charportraits/0.png');"></div>
+            <div class="profile-text c-side">
+                <span class="hud-name">CPU</span>
+                <span class="hud-rank">INITIATE</span>
+            </div>
+        </div>
+    </div>
     <div class="match-container">
         <aside class="players-col">
             <div class="player-card">
-                <div class="portraitc1"></div>
+                <div class="portrait-wrapper">
+                    <div class="portraitc1"></div>
+                    <div class="health-bar">100 / 100</div>
+                </div>
                 <div class="skills-rect1">
                     <div class="skill1" style="background-image: url('img/skillportraits/1.png')"></div>
                     <div class="skill2" style="background-image: url('img/skillportraits/2.png')"></div>
@@ -20,7 +66,10 @@
             </div>
 
             <div class="player-card">
-                <div class="portraitc2"></div>
+                <div class="portrait-wrapper">
+                    <div class="portraitc2"></div>
+                    <div class="health-bar">100 / 100</div>
+                </div>
                 <div class="skills-rect2">
                     <div class="skill5" style="background-image: url('img/skillportraits/5.jpeg')"></div>
                     <div class="skill6" style="background-image: url('img/skillportraits/6.jpeg')"></div>
@@ -30,7 +79,10 @@
             </div>
 
             <div class="player-card">
-                <div class="portraitc3"></div>
+                <div class="portrait-wrapper">
+                    <div class="portraitc3"></div>
+                    <div class="health-bar">100 / 100</div>
+                </div>
                 <div class="skills-rect3">
                     <div class="skill9" style="background-image: url('img/skillportraits/9.jpeg')"></div>
                     <div class="skill10" style="background-image: url('img/skillportraits/10.png')"></div>
@@ -41,9 +93,20 @@
         </aside>
 
         <aside class="cpu-col">
-            <div class="cpu-portrait1"></div>
-            <div class="cpu-portrait2"></div>
-            <div class="cpu-portrait3"></div>
+            <div class="portrait-wrapper">
+                <div class="cpu-portrait1"></div>
+                <div class="health-bar">100 / 100</div>
+            </div>
+
+            <div class="portrait-wrapper">
+                <div class="cpu-portrait2"></div>
+                <div class="health-bar">100 / 100</div>
+            </div>
+
+            <div class="portrait-wrapper">
+                <div class="cpu-portrait3"></div>
+                <div class="health-bar">100 / 100</div>
+            </div>
         </aside>
 
         <div class="skilinfoportrait" style="background-image: url('img/skillportraits/1.png')"></div>
