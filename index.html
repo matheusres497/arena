@@ -31,13 +31,22 @@
     </style>
 </head>
 <body>
-
     <button onclick="openGame()">Open Game</button>
     <script>
+
+    function createWindow(src, width, height){
+        var win = window.open(src, "_new", "width="+width+",height="+height);
+        win.addEventListener("resize", function(){
+            console.log("Resized");
+            win.resizeTo(width, height);
+        });
+    }
+
         function openGame() {
             const width = 1280;
             const height = 960;
-            window.open('game.html', 'gameWindow', `width=${width},height=${height},resizable=no`);
+            createWindow("game.html", width, height);
+            // window.open('matchoffline.html', 'gameWindow', `width=${width},height=${height},resizable=no`);
         }
     </script>
 </body>

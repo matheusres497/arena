@@ -1,4 +1,5 @@
         body {
+            background-image: url("/img/menubg/dbz.png");
             margin: 0;
             width: 1024px;
             height: 768px;
@@ -9,54 +10,98 @@
             justify-content: center;
             overflow: hidden;
         }
-        .main-buttons {
+        .exit-button {
             position: absolute;
-            top: 475px;
+            top: 461px;
+            left: 125px;
+        }
+        .playermatch-button {
+            position: absolute;
+            top: 461px;
+            left: 362px;
+        }
+        .private-match-button {
+            position: absolute;
+            top: 461px;
+            left: 648px;
+        }
+        .cpu-button {
+            position: absolute;
+            top: 461px;
+            left: 953px;
         }
         button {
             margin: 0 10px;
             padding: 10px 20px;
             font-size: 16px;
         }
+
+        .player-info {
+            position: absolute;
+            top: 565px;
+            left: 860px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .player-portrait {
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            background-size: cover;
+            background-position: center;
+        }
+        .player-name, .player-rank, .player-level, .player-ratio {
+            color: #000000;
+            font-size: 14px;
+            text-align: left;
+            position: relative;
+            left: 110px;
+            bottom: 110px;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        .teamtext {
+            font-family: monospace;
+            font-weight: bold;
+        }
+
         .character-grid {
-            width: 550px;
-            height: 200px;
-            border: 3px solid black;
-            background-color: white;
+            width: 650px;
+            height: 275px;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            padding: 3px;
             position: absolute;
-            bottom: 20px;
+            bottom: 50px;
+            left: 150px;
+            padding-top: 4px;
         }
 
         .team-grid {
-            width: 400px;
-            height: 110px;
-            border: 2px solid black;
-            background-color: white;
+            width: 250px;
+            height: 75px;
             display: flex;
             flex-wrap: wrap;
             align-items: flex-start;
             justify-content: space-between;
             padding: 3px;
             position: absolute;
-            top: 240px;
+            top: 700px;
+            right: 150px;
         }
         .box {
-            width: 55px;
-            height: 50px;
+            width: 80px;
+            height: 80px;
             border: 2px solid black;
-            margin: 3px;
-            padding-top: 6px;
+            margin: 2px;
             background-size: cover;
             background-position: center;
         }
         .team-box {
-            width: 100px;
-            height: 100px;
-            margin: 3px;
+            width: 70px;
+            height: 70px;
             border: 2px solid #000000;
             background-size: cover;
             background-position: center;

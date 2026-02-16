@@ -2,21 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1024, height=768, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Arena</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <div class="player-info">
+        <div class="player-portrait" style="background-image: url('img/charportraits/0.png');"></div>
+        <div class="player-name">Player 1</div>
+        <div class="player-rank">Initiate</div>
+        <div class="player-level">Level: 1</div>
+        <div class="player-ratio">Win Ratio: 0:0</div>
+    </div>
+
     <div class="team-grid">
         <div class="team-box" style="background-image: url('img/charportraits/1.png');"></div>
         <div class="team-box" style="background-image: url('img/charportraits/2.png');"></div>
         <div class="team-box" style="background-image: url('img/charportraits/3.png');"></div>
+        <p class="teamtext">SELECT 3 CHARACTERS INTO YOUR TEAM</p>
     </div>
-    <div class="main-buttons">
+    <div class="exit-button">
         <button>Exit Game</button>
-        <button>Find Match</button>
-        <button>Versus</button>
-        <button>CPU Match</button>
+    </div>
+    <div class="playermatch-button">
+        <button>Player Match</button>
+    </div>
+    <div class="private-match-button">
+        <button>Private Match</button>
+    </div>
+    <div class="cpu-button">
+        <button onclick="startMatch()">CPU Match</button>
     </div>
     <div class="character-grid">
         <div class="box" style="background-image: url('img/charportraits/1.png');"></div>
@@ -40,16 +55,10 @@
         <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
         <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
         <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
     </div>
 </body>
 <script src="js/script.js"></script>
-
-    <button onclick="startMatch()">Start Game</button>
-    <script>
-
+<script>
     function createWindow(src, width, height){
         var win = window.open(src, "_new", "width="+width+",height="+height);
         win.addEventListener("resize", function(){
