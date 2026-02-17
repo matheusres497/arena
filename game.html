@@ -7,6 +7,39 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+<button class="setting-btn" onclick="toggleSettings()">&#9776;</button>
+
+    <div id="settingsOverlay" class="settings-overlay">
+        <div class="settings-box">
+            <span class="close-settings-btn" onclick="toggleSettings()">&times;</span>
+            <h2>SETTINGS</h2>
+            
+            <div class="setting-option">
+                <label class="switch-container">
+                    <span>Use Desktop Cursor</span>
+                    <input type="checkbox" id="cursorToggle">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+
+            <div class="setting-option">
+                <label>Music Volume</label>
+                <input type="range" min="0" max="100" value="50" class="slider">
+            </div>
+
+            <div class="setting-option">
+                <label>Sound Effects</label>
+                <input type="range" min="0" max="100" value="50" class="slider">
+            </div>
+
+            <div class="logout-container">
+                <button class="menu-btn logout">Logout</button>
+            </div>
+        </div>
+    </div>
+
+
     <div class="player-info">
         <div class="player-portrait" style="background-image: url('img/charportraits/0.png');"></div>
         <div class="player-name">Player 1</div>
