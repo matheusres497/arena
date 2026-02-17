@@ -1,0 +1,191 @@
+{
+    "characters": [
+        {
+            "charid": 1,
+            "name": "Kurosaki Ichigo",
+            "description": "Ichigo is a Substitute Shinigami who initially borrowed Rukia's own Shinigami powers. Since then, Ichigo has unlocked and learned how to use Zangetsu while developing a close bond with him.",
+            "tags": ["Substitute Shinigami", "Human", "Karakura Town"],
+            "portrait": "https://imgur.com/ugl6tIm.png",
+            "skills": [
+                {
+                    "skillid": 1,
+                    "skillportrait": "https://imgur.com/VXKHzgv.png",
+                    "name": "Zangetsu Slash",
+                    "description": "This character deals 20 physical damage to an enemy.",
+                    "skilltags": ["Physical", "Instant"],
+                    "target": {"enemy": 1, "multitarget": false},
+                    "damage": {"type": "physical", "value": 20},
+                    "energycost": {"red": 1},
+                    "cooldown": 0
+                },
+                {
+                    "skillid": 2,
+                    "skillportrait": "https://imgur.com/0yigStg.png",
+                    "name": "Hollow Slayer",
+                    "description": "This character deals 35 energy damage to an enemy.",
+                    "skilltags": ["Energy", "Instant"],
+                    "target": {"enemy": 1, "multitarget": false},
+                    "damage": {"type": "energy", "value": 35},
+                    "energycost": {"yellow": 1, "red": 1},
+                    "cooldown": 1
+                },
+                {
+                    "skillid": 3,
+                    "skillportrait": "https://imgur.com/uEmk5yV.png",
+                    "name": "Summon Zangetsu",
+                    "description": "This character gains 25 permanent shield points.",
+                    "skilltags": ["Strategy", "Instant"],
+                    "target": {"self": 1, "multitarget": false},
+                    "effects": [
+                        {"effectname": "giveshield", "value": 25}
+                    ],
+                    "energycost": {"random": 1},
+                    "usablewhileactive": false,
+                    "cooldown": 3
+                },
+                {
+                    "skillid": 4,
+                    "skillportrait": "https://imgur.com/jd2U3Ai.png",
+                    "name": "Zangetsu's Defense",
+                    "description": "This skill makes Ichigo invulnerable for 1 turn.",
+                    "skilltags": ["Strategy", "Instant"],
+                    "target": {"self": 1, "multitarget": false},
+                    "effects": [
+                         {"effectname": "invul", "duration": 1}
+                    ],
+                    "energycost": {"random": 1},
+                    "cooldown": 4
+                }
+            ]
+        },
+        {
+            "charid": 2,
+            "name": "Kuchiki Rukia",
+            "description": "A Shinigami from the 13th division and the sister of Kuchiki Byakuya. She is skilled in various types of Kido for disabling enemies and is currently on a mission to the real world.",
+            "tags": ["Shinigami", "Karakura Town", "Soul Society"],
+            "portrait": "https://imgur.com/iCYYw5q.png",
+            "skills": [
+                {
+                    "skillid": 5,
+                    "skillportrait": "https://imgur.com/i8DO0lD.png",
+                    "name": "Bakudo #1: Sai",
+                    "description": "This character deals 10 energy damage to an enemy and stuns them for 1 turn.",
+                    "skilltags": ["Energy", "Instant"],
+                    "target": {"enemy": 1, "multitarget": false},
+                    "damage": {"type": "energy", "value": 10},
+                    "effects": [
+                         {"effectname": "stun", "duration": 1}
+                    ],
+                    "energycost": {"blue": 1},
+                    "cooldown": 1
+                },
+                {
+                    "skillid": 6,
+                    "skillportrait": "https://imgur.com/VjXY3yB.png",
+                    "name": "Hado #33: Sokatsui",
+                    "description": "This character deals 20 energy damage to an enemy and reduces the physical damage they deal by 15 for 1 turn.",
+                    "skilltags": ["Energy", "Instant"],
+                    "target": {"enemy": 1, "multitarget": false},
+                    "damage": {"type": "energy", "value": 20},
+                    "effects": [
+                        {"effectname": "reducedmgdealt", "value": 15, "dmgtype": "physical", "duration": 1}
+                    ],
+                    "energycost": {"blue": 1},
+                    "cooldown": 0
+                },
+                {
+                    "skillid": 7,
+                    "skillportrait": "https://imgur.com/vK9aFRm.png",
+                    "name": "Gokon Tekko",
+                    "description": "This character removes 1 random energy from one enemy.",
+                    "skilltags": ["Strategy", "Instant"],
+                    "target": {"enemy": 3, "multitarget": false},
+                    "effects": [
+                        {"effectname": "removetargetenergy", "value": 1, "random": true}
+                    ],
+                    "energycost": {"random": 1},
+                    "cooldown": 3
+                },
+                {
+                    "skillid": 8,
+                    "skillportrait": "https://imgur.com/AzbNN4K.png",
+                    "name": "Air Leap",
+                    "description": "This skill makes Rukia invulnerable for 1 turn.",
+                    "skilltags": ["Strategy", "Instant"],
+                    "target": {"self": 1, "multitarget": false},
+                    "effects": [
+                        {
+                            "effectname": "invul", "duration": 1
+                        }
+                    ],
+                    "energycost": {"random": 1},
+                    "cooldown": 4
+                }
+            ]
+        },
+        {
+            "charid": 3,
+            "name": "Inoue Orihime",
+            "description": "A classmate and companion of Ichigo. While shy and timid, Orihime possesses powers that are beyond the understanding of Shinigami or Hollows; those of which allow her to negate or reject opposing powers that might harm her friends.",
+            "tags": ["Human", "Karakura Town"],
+            "portrait": "https://imgur.com/RMW9SeP.png",
+            "skills": [
+                {
+                    "skillid": 9,
+                    "skillportrait": "https://imgur.com/GCfTIYS.png",
+                    "name": "Shun Shun Rikka: Tsubaki",
+                    "description": "Orihime summons Tsubaki, who deals 10 armor piercing physical damage to one enemy. For 2 turns, that enemy will receive 5 more damage from physical and energy skills.",
+                    "skilltags": ["Physical", "Instant"],
+                    "target": {"enemy": 1, "multitarget": false},
+                    "damage": {"type": "physical", "value": 10, "ignorearmor": true},
+                    "effects": [
+                        {"effectname": "dmgvulnerability", "physical": 5, "energy": 5, "duration": 2}
+                    ],
+                    "energycost": {"random": 1},
+                    "cooldown": 0
+                },
+                {
+                    "skillid": 10,
+                    "skillportrait": "https://imgur.com/oDAxSBM.png",
+                    "name": "Santen Kesshun",
+                    "description": "Orihime places a shield to block incoming attacks. For 1 turn, Orihime and one ally will gain 20 points of shield and will heal 10 health.",
+                    "skilltags": ["Heal", "Strategy", "Instant"],
+                    "target": {"self": 1, "ally": 1, "multitarget": true},
+                    "effects": [
+                        {"effectname": "giveshield", "value": 20, "duration": 1},
+                        {"effectname": "heal", "value": 10}
+                    ],
+                    "energycost": {"random": 1},
+                    "cooldown": 1
+                },
+                {
+                    "skillid": 11,
+                    "skillportrait": "https://imgur.com/z6AEcgg.png",
+                    "name": "Soten Kisshun",
+                    "description": "Orihime cleanses an ally for 2 turns and then heals that ally, or herself, for 25 health for 2 turns. If she is stunned on the second turn of its usage, that ally will instantly heal 15 health.",
+                    "skilltags": ["Strategy", "Instant"],
+                    "target": {"ally": 1},
+                    "effects": [
+                        {"effectname": "cleanse", "duration": 2},
+                        {"effectname": "heal", "value": 25, "duration": 2}
+                    ],
+                    "energycost": {"yellow": 1, "random": 1},
+                    "cooldown": 2
+                },
+                {
+                    "skillid": 12,
+                    "skillportrait": "https://imgur.com/OzlDUB5.png",
+                    "name": "Orihime's Evasion",
+                    "description": "This skill makes Orihime invulnerable for 1 turn.",
+                    "skilltags": ["Strategy", "Instant"],  
+                    "target": {"self": 1, "multitarget": false},
+                    "effects": [
+                        {"effectname": "invul", "duration": 1}
+                    ],
+                    "energycost": {"random": 1},
+                    "cooldown": 4
+                }
+            ]
+        }
+    ]    
+}
