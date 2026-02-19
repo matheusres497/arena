@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Arena</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-
 <button class="setting-btn" onclick="toggleSettings()">&#9776;</button>
 
     <div id="settingsOverlay" class="settings-overlay">
@@ -48,10 +47,10 @@
         <div class="player-ratio">Win Ratio: 0:0</div>
     </div>
 
-    <div class="team-grid">
-        <div class="team-box" style="background-image: url('img/charportraits/1.png');"></div>
-        <div class="team-box" style="background-image: url('img/charportraits/2.png');"></div>
-        <div class="team-box" style="background-image: url('img/charportraits/3.png');"></div>
+    <div id="team-grid-id" class="team-grid" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div id="team-box-1" data-charid="0" draggable="true" class="team-box" style="background-image: url('img/charportraits/0.png');"></div>
+        <div id="team-box-2" data-charid="0" draggable="true" class="team-box" style="background-image: url('img/charportraits/0.png');"></div>
+        <div id="team-box-3" data-charid="0" draggable="true" class="team-box" style="background-image: url('img/charportraits/0.png');"></div>
         <p class="teamtext">SELECT 3 CHARACTERS INTO YOUR TEAM</p>
     </div>
     <div class="exit-button">
@@ -67,31 +66,81 @@
         <button onclick="startMatch()">CPU Match</button>
     </div>
     <div class="character-grid">
-        <div class="box" style="background-image: url('img/charportraits/1.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/2.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/3.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/4.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/5.jpeg');"></div>
-        <div class="box" style="background-image: url('img/charportraits/6.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
-        <div class="box" style="background-image: url('img/charportraits/0.png');"></div>
+
+        <% jsonData.characters.forEach(function(personagem) { %>
+        <div draggable="true" ondragstart="rastrearMovimento(event)" class="box" data-charid="<%= personagem.charid %>" id="charid-<%= personagem.charid %>" style="background-image: url('<%= personagem.portrait %>');"></div>
+        <% }); %>
+        
     </div>
 </body>
 <script src="js/script.js"></script>
 <script>
+
+    function drop(event) {
+        event.preventDefault();
+        var charId = event.dataTransfer.getData("personagem");
+        var targetBox = event.target;
+
+        if (!targetBox.classList.contains("team-box")) {
+            targetBox = targetBox.closest(".team-box");
+        }
+
+        if (charId && targetBox && targetBox.classList.contains("team-box")) {
+            var originalChar = document.getElementById(charId);
+
+            if (originalChar) {
+                var charPortrait = originalChar.style.backgroundImage;
+                targetBox.style.backgroundImage = charPortrait;
+                targetBox.setAttribute("data-charid", charId.split("-")[1]);
+            }
+
+            originalChar.style.visibility = "hidden";
+
+            targetBox.ondblclick = removerPersonagem;
+
+            const char1 = document.getElementById("team-box-1").getAttribute("data-charid");
+            const char2 = document.getElementById("team-box-2").getAttribute("data-charid");
+            const char3 = document.getElementById("team-box-3").getAttribute("data-charid");
+
+            fetch("/salvartime", {
+                method: "POST",
+                body: JSON.stringify([char1, char2, char3]),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+                });
+
+        }
+    }
+
+    function removerPersonagem(event) {
+        var targetBox = event.currentTarget;
+        var charIdValue = targetBox.getAttribute("data-charid");
+
+        if (charIdValue && charIdValue !== "0") {
+            // 1. Torna o personagem visível na grid novamente
+            var originalChar = document.getElementById("charid-" + charIdValue);
+            if (originalChar) {
+                originalChar.style.visibility = "visible";
+            }
+
+            // 2. Reseta a caixa de equipe para o estado vazio (imagem 0.png)
+            targetBox.style.backgroundImage = "url('img/charportraits/0.png')";
+            targetBox.setAttribute("data-charid", "0");
+            
+            console.log("Personagem removido da equipe.");
+        }
+    }
+
+    function allowDrop(event) {
+        event.preventDefault();
+    }
+
+    function rastrearMovimento(event) {
+        var charId = event.target.getAttribute("data-charid");
+        event.dataTransfer.setData("personagem", "charid-" + charId);
+    }
+
     function createWindow(src, width, height){
         var win = window.open(src, "_new", "width="+width+",height="+height);
         win.addEventListener("resize", function(){
@@ -101,11 +150,24 @@
     }
 
         function startMatch() {
+
+            const char1 = document.getElementById("team-box-1").getAttribute("data-charid");
+            const char2 = document.getElementById("team-box-2").getAttribute("data-charid");
+            const char3 = document.getElementById("team-box-3").getAttribute("data-charid");
+
+            if (char1 == "0" || char2 == "0" || char3 == "0") {
+                alert("Selecione 3 personagens antes de começar!");
+                return;
+            }
+
             const width = 1280;
             const height = 960;
-            createWindow("matchoffline.html", width, height);
-            // window.open('matchoffline.html', 'gameWindow', `width=${width},height=${height},resizable=no`);
+
+            // const url = `matchoffline.html?p1=${char1}&p2=${char2}&p3=${char3}`;
+            const url = `/partida`;
+
+            createWindow(url, width, height);
         }
-    </script>
+</script>
 
 </html>

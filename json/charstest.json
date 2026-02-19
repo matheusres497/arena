@@ -1,6 +1,18 @@
 {
     "characters": [
         {
+            "charid": 5,
+            "name": "ABC 123",
+            "description": "abc",
+            "portrait": "https://imgur.com/ugl6tIm.png"
+        },
+        {
+            "charid": 6,
+            "name": "DEF 456",
+            "description": "abc",
+            "portrait": "https://imgur.com/ugl6tIm.png"
+        },
+        {
             "charid": 1,
             "name": "Kurosaki Ichigo",
             "description": "Ichigo is a Substitute Shinigami who initially borrowed Rukia's own Shinigami powers. Since then, Ichigo has unlocked and learned how to use Zangetsu while developing a close bond with him.",
@@ -20,7 +32,7 @@
                 },
                 {
                     "skillid": 2,
-                    "skillportrait": "https://imgur.com/0yigStg.png",
+                    "skillportrait": "https://imgur.com/FWCce28.png",
                     "name": "Hollow Slayer",
                     "description": "This character deals 35 energy damage to an enemy.",
                     "skilltags": ["Energy", "Instant"],
@@ -177,6 +189,70 @@
                     "skillportrait": "https://imgur.com/OzlDUB5.png",
                     "name": "Orihime's Evasion",
                     "description": "This skill makes Orihime invulnerable for 1 turn.",
+                    "skilltags": ["Strategy", "Instant"],  
+                    "target": {"self": 1, "multitarget": false},
+                    "effects": [
+                        {"effectname": "invul", "duration": 1}
+                    ],
+                    "energycost": {"random": 1},
+                    "cooldown": 4
+                }
+            ]
+        },
+        {
+            "charid": 4,
+            "name": "Arisawa Tatsuki",
+            "description": "The childhood friend of Ichigo and Orihime; Tatsuki is strong willed but protective of her friends. Despite having little ability in reiatsu, Tatsuki is an expert in martial arts, which she uses to pound at her enemies while giving openings to her allies to follow up.",
+            "tags": ["Human", "Karakura Town"],
+            "portrait": "https://imgur.com/pFeqb0V.png",
+            "skills": [
+                {
+                    "skillid": 9,
+                    "skillportrait": "https://imgur.com/jmffNSH.png",
+                    "name": "Gut Breaker",
+                    "description": "This character does a sequence of powerful kicks, dealing an initial 10 physical damage to one enemy and stunning them for 1 turn. The following 2 turns, that enemy will receive an additional 10 physical damage each turn, and this character will gain 10 points of damage reduction*. This skill stacks.",
+                    "skilltags": ["Physical", "Instant"],
+                    "target": {"enemy": 1, "multitarget": false},
+                    "damage": {"type": "physical", "value": 10, "ignorearmor": true},
+                    "effects": [
+                        {"effectname": "dmgvulnerability", "physical": 5, "energy": 5, "duration": 2}
+                    ],
+                    "energycost": {"random": 1},
+                    "cooldown": 0
+                },
+                {
+                    "skillid": 10,
+                    "skillportrait": "https://imgur.com/muvFyyX.png",
+                    "name": "Swift Knee Pounce",
+                    "description": "This character creates an opening for her allies by doing a front knee strike to one enemy dealing 10 physical damage to them for 2 turns. During this time, if a character uses a new harmful non-strategic skill on them, they'll heal 10 health*.",
+                    "skilltags": ["Heal", "Strategy", "Instant"],
+                    "target": {"self": 1, "ally": 1, "multitarget": true},
+                    "effects": [
+                        {"effectname": "giveshield", "value": 20, "duration": 1},
+                        {"effectname": "heal", "value": 10}
+                    ],
+                    "energycost": {"random": 1},
+                    "cooldown": 1
+                },
+                {
+                    "skillid": 11,
+                    "skillportrait": "https://imgur.com/336gbiN.png",
+                    "name": "Fighting Spirit",
+                    "description": "This character boosts herself or one ally's will to fight. The following 2 turns, This character or that ally will deal 5 additional damage with non-affliction skills, heal 10 health each time they use a new non-strategic skill, and have 10 points of damage reduction.",
+                    "skilltags": ["Strategy", "Instant"],
+                    "target": {"ally": 1},
+                    "effects": [
+                        {"effectname": "cleanse", "duration": 2},
+                        {"effectname": "heal", "value": 25, "duration": 2}
+                    ],
+                    "energycost": {"yellow": 1, "random": 1},
+                    "cooldown": 2
+                },
+                {
+                    "skillid": 12,
+                    "skillportrait": "https://imgur.com/L2fA3k4.png",
+                    "name": "Hide",
+                    "description": "This skill makes Tatsuki invulnerable for 1 turn.",
                     "skilltags": ["Strategy", "Instant"],  
                     "target": {"self": 1, "multitarget": false},
                     "effects": [

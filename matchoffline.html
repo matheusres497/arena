@@ -16,7 +16,7 @@
             <div class="hud-portrait" style="background-image: url('img/charportraits/0.png');"></div>
         </div>
 
-<div class="hud-center">
+        <div class="hud-center">
             <div class="turn-text">OPPONENT'S TURN</div>
             
             <div class="timer-bar-bg">
@@ -52,47 +52,31 @@
     </div>
     <div class="match-container">
         <aside class="players-col">
-            <div class="player-card">
-                <div class="portrait-wrapper">
-                    <div class="portraitc1"></div>
-                    <div class="health-bar">100 / 100</div>
-                </div>
-                <div class="skills-rect1">
-                    <div class="skill1" style="background-image: url('img/skillportraits/1.png')"></div>
-                    <div class="skill2" style="background-image: url('img/skillportraits/2.png')"></div>
-                    <div class="skill3" style="background-image: url('img/skillportraits/3.png')"></div>
-                    <div class="skill4" style="background-image: url('img/skillportraits/4.png')"></div>
-                </div>
-            </div>
+            <% partidaOffline.timePersonagens.forEach(function(personagem) { %> 
+                <div class="player-card">
+                    <div class="portrait-wrapper">
+                        <div class="portrait" onclick="infobox('<%= personagem.description %>', '<%= personagem.name %>', '<%= personagem.portrait %>')" data-charid="<%= personagem.charid %>" style="background-image: url('<%= personagem.portrait %>');"></div>
+                        <div class="health-bar">100 / 100</div>
+                    </div>
+                    <div class="skills-rect">
+                    <% personagem.skills.forEach(function(skill) { %> 
 
-            <div class="player-card">
-                <div class="portrait-wrapper">
-                    <div class="portraitc2"></div>
-                    <div class="health-bar">100 / 100</div>
-                </div>
-                <div class="skills-rect2">
-                    <div class="skill5" style="background-image: url('img/skillportraits/5.jpeg')"></div>
-                    <div class="skill6" style="background-image: url('img/skillportraits/6.jpeg')"></div>
-                    <div class="skill7" style="background-image: url('img/skillportraits/7.png')"></div>
-                    <div class="skill8" style="background-image: url('img/skillportraits/8.png')"></div>
-                </div>
-            </div>
+                        <div class="skill" onclick="infobox('<%= skill.description %>', '<%= skill.name %>', '<%= skill.skillportrait %>')" data-skillid="<%= skill.skillid %>" style="background-image: url('<%= skill.skillportrait %>');"></div>
 
-            <div class="player-card">
-                <div class="portrait-wrapper">
-                    <div class="portraitc3"></div>
-                    <div class="health-bar">100 / 100</div>
-                </div>
-                <div class="skills-rect3">
-                    <div class="skill9" style="background-image: url('img/skillportraits/9.jpeg')"></div>
-                    <div class="skill10" style="background-image: url('img/skillportraits/10.png')"></div>
-                    <div class="skill11" style="background-image: url('img/skillportraits/11.jpeg')"></div>
-                    <div class="skill12" style="background-image: url('img/skillportraits/12.png')"></div>
-                </div>
-            </div>
+                    <% }); %>
+                    </div>
+                </div>                
+            <% }); %>
         </aside>
 
         <aside class="cpu-col">
+            <% partidaOffline.timePersonagensCPU.forEach(function(cpu) { %> 
+                <div class="portrait-wrapper">
+                    <div class="cpu-portrait" onclick="infobox('<%= cpu.description %>', '<%= cpu.name %>', '<%= cpu.portrait %>')" data-charid="<%= cpu.charid %>" style="background-image: url('<%= cpu.portrait %>');"></div>
+                    <div class="health-bar">100 / 100</div>
+                </div>      
+            <% }); %>
+<!-- 
             <div class="portrait-wrapper">
                 <div class="cpu-portrait1"></div>
                 <div class="health-bar">100 / 100</div>
@@ -106,7 +90,7 @@
             <div class="portrait-wrapper">
                 <div class="cpu-portrait3"></div>
                 <div class="health-bar">100 / 100</div>
-            </div>
+            </div> -->
         </aside>
 
         <div class="skilinfoportrait" style="background-image: url('img/skillportraits/1.png')"></div>
@@ -117,4 +101,110 @@
 
     </div>
 </body>
+
+<script>
+    
+
+    function infobox(description, name, portrait) {
+        document.querySelector('.skilinfoportrait').style.backgroundImage = `url('${portrait}')`;
+        document.querySelector('.skillinfoboxname').textContent = name.toUpperCase();
+        document.querySelector('.skillinfoboxdesc').innerHTML = `<p>${description.toUpperCase()}</p>`;
+    }
+
+</script>
+
+        <!-- // aqui ele está pegando os IDs que o game.html passou por URL (Ex: matchoffline.html?p1=1&p2=2&p3=3)
+        const params = new URLSearchParams(window.location.search);
+        const p1 = parseInt(params.get('p1'));
+        const p2 = parseInt(params.get('p2'));
+        const p3 = parseInt(params.get('p3'));
+
+        if (!p1 || !p2 || !p3) return;
+
+        try {
+            // aqui ele está pegando os dados dos personagens 
+            const response = await fetch('json/charstest.json');
+            const data = await response.json();
+            
+            // aqui ele está procurando os chars selecionados dentro do JSON, usando os IDs que ele pegou da URL
+            const team = [
+                data.characters.find(c => c.charid === p1),
+                data.characters.find(c => c.charid === p2),
+                data.characters.find(c => c.charid === p3)
+            ];
+
+            // aqui ele atualiza os dados na tela, colocando os retratos dos personagens e das skills nos lugares certos
+            team.forEach((char, index) => {
+                if (!char) return;
+
+                const portraitDiv = document.querySelector(`.portraitc${index + 1}`);
+                if (portraitDiv) {
+                    portraitDiv.style.backgroundImage = `url('${char.portrait}')`;
+                    portraitDiv.setAttribute('data-charid', char.charid); 
+
+                    // aqui ele adiciona um evento de clique para cada retrato, para mostrar as informações do personagem na caixa de descrição
+                    portraitDiv.addEventListener('click', () => {
+                        document.querySelector('.skilinfoportrait').style.backgroundImage = `url('${char.portrait}')`;
+                        document.querySelector('.skillinfoboxname').textContent = char.name.toUpperCase();
+                        document.querySelector('.skillinfoboxdesc').innerHTML = `<p>${char.description.toUpperCase()}</p>`;
+                    });
+
+                }
+
+                char.skills.forEach((skill, skillIndex) => {
+                    const globalSkillIndex = (index * 4) + skillIndex + 1;
+                    const skillDiv = document.querySelector(`.skill${globalSkillIndex}`);
+                    
+                    if (skillDiv) {
+                        skillDiv.style.backgroundImage = `url('${skill.skillportrait}')`;
+                        skillDiv.setAttribute('data-skillid', skill.skillid);
+                        skillDiv.style.cursor = 'default';
+                        // aqui ele adiciona um evento de clique para cada skill, para mostrar as informações dela na caixa de descrição
+                        skillDiv.addEventListener('click', () => {
+                            document.querySelector('.skilinfoportrait').style.backgroundImage = `url('${skill.skillportrait}')`;
+                            document.querySelector('.skillinfoboxname').textContent = skill.name.toUpperCase();
+                            document.querySelector('.skillinfoboxdesc').innerHTML = `<p>${skill.description.toUpperCase()}</p>`;
+
+                        });
+                    }
+                });
+            });
+
+            // aqui ele gera o time do CPU de forma aleatória, escolhendo 3 personagens aleatórios (sem repetir) do JSON
+            const cpuTeam = [];
+            const availableChars = [...data.characters];
+
+            for (let i = 0; i < 3; i++) {
+                if (availableChars.length === 0) break;
+                // aqui ele pega um índice aleatório do array de personagens e adiciona o personagem correspondente ao time do CPU
+                const randomIndex = Math.floor(Math.random() * availableChars.length);
+                cpuTeam.push(availableChars[randomIndex]);
+                availableChars.splice(randomIndex, 1);
+            }
+
+            // atualizar a tela do CPU com os personagens que ele escolheu, colocando os retratos nos lugares certos e adicionando o evento de clique para mostrar as informações na caixa de descrição
+            cpuTeam.forEach((char, index) => {
+                if (!char) return;
+
+                const cpuPortraitDiv = document.querySelector(`.cpu-portrait${index + 1}`);
+                if (cpuPortraitDiv) {
+                    cpuPortraitDiv.style.backgroundImage = `url('${char.portrait}')`;
+                    cpuPortraitDiv.setAttribute('data-charid', char.charid);
+                    cpuPortraitDiv.style.cursor = 'default';
+
+                    cpuPortraitDiv.addEventListener('click', () => {
+                        document.querySelector('.skilinfoportrait').style.backgroundImage = `url('${char.portrait}')`;
+                        document.querySelector('.skillinfoboxname').textContent = char.name.toUpperCase();
+                        document.querySelector('.skillinfoboxdesc').innerHTML = `<p>${char.description.toUpperCase()}</p>`;
+                    });
+                }
+            });
+
+        } catch (error) {
+            console.error("Error loading character data:", error);
+        }
+    }); -->
+
+
+
 </html>
